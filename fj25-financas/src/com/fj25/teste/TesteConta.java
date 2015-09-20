@@ -17,7 +17,8 @@ public class TesteConta {
 		dao = new ContaDao(manager);
 		
 		//testeSalvar();
-		testePesquisar();
+		//testePesquisar();
+		testeRemove();
 		
 		long fim = System.currentTimeMillis();
 		System.out.println("Executado em: " + (fim-inicio) + "ms");
@@ -27,9 +28,14 @@ public class TesteConta {
 		Conta conta = new Conta("NuBank", "0088", "Greg");
 		dao.salva(conta);
 	}
-	
+
 	private static void testePesquisar() {
 		Conta encontrado = dao.busca(1L);
 		System.out.println("Conta encontrada " + encontrado.getTitular());
+	}
+	
+	private static void testeRemove() {
+		Conta conta = dao.busca(1L);
+		dao.remove(conta);
 	}
 }

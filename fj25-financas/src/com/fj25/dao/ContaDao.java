@@ -28,5 +28,9 @@ public class ContaDao {
 	public List<Conta> lista(){
 		return manager.createQuery("from Conta").getResultList();
 	}
-	
+
+	public void remove(Conta conta) {
+		manager.remove(conta);
+	}
+
 }
