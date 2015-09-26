@@ -28,7 +28,7 @@ public class Movimentacao {
 	@ManyToOne
 	private Conta conta;
 	
-	@Enumerated(EnumType.STRING)
+	@Enumerated(EnumType.STRING) //perguntar sobre tamanho enum
 	private TipoMovimentacao tipoMovimentacao;
 
 	public Movimentacao() {

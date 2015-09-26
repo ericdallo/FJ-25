@@ -5,6 +5,7 @@ import java.util.Calendar;
 
 import javax.persistence.EntityManager;
 
+import com.fj25.dao.MovimentacaoDao;
 import com.fj25.modelo.Conta;
 import com.fj25.modelo.Movimentacao;
 import com.fj25.modelo.TipoMovimentacao;
@@ -16,9 +17,9 @@ public class TesteMovimentacao {
 	
 	public static void main(String[] args) {
 		manager = new JPAUtil().getEm();
-		salvaMovimentacao();
+		//salvaMovimentacao();
 		pesquisaMovimentacao();
-		
+
 		manager.close();
 	}
 
@@ -40,6 +41,8 @@ public class TesteMovimentacao {
 	}
 	
 	private static void pesquisaMovimentacao() {
-		Movimentacao movimentacao = manager.getReference(Movimentacao.class, 1);
+		MovimentacaoDao dao = new MovimentacaoDao(manager);
+		Movimentacao movimentacao = dao.busca(2L);
+		System.err.println(movimentacao.getConta().getTitular());
 	}
 }
