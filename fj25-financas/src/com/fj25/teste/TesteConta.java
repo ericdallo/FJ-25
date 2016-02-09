@@ -17,8 +17,8 @@ public class TesteConta {
 		dao = new ContaDao(manager);
 		
 		//testeSalvar();
-		//testePesquisar();
-		testeRemove();
+		testePesquisar();
+		//testeRemove();
 		
 		long fim = System.currentTimeMillis();
 		System.out.println("Executado em: " + (fim-inicio) + "ms");

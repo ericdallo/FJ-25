@@ -1,16 +1,20 @@
 package com.fj25.modelo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity @Table(name="conta")
 public class Conta {
 	
-	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Id @GeneratedValue
 	private Long id;
 	
 	private String numero;
@@ -19,6 +23,9 @@ public class Conta {
 	
 	@Transient // Nao sera mapeado
 	public static int contadorDeContas;
+	
+	@OneToMany(mappedBy="conta")
+	private List<Movimentacao> movimentacoes = new ArrayList<>();
 	
 	public Conta(String numero, String agencia, String titular) {
 		this.numero = numero;
@@ -60,6 +67,10 @@ public class Conta {
 
 	public void setTitular(String titular) {
 		this.titular = titular;
+	}
+
+	public List<Movimentacao> getMovimentacao() {
+		return this.movimentacoes;
 	}
 
 }
